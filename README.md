@@ -1,23 +1,26 @@
 # Airbag
 
-**Depeg cover that deploys itself.**
+**LP cover that deploys itself.**
 
-Airbag is a parametric insurance protocol for stablecoins on Arbitrum. Buyers pay a small premium and hold a
-transferable cover note. When the insured event happens (a **USDG depeg**, a **Uniswap v4 LP loss** or a
-**tokenized-stock gap-down**), a permissionless keeper fires the payout and **the USDG lands in the holder's
-wallet automatically**, with no claim form, no committee and no waiting period. Underwriters back the cover
-from their **own wallets through 1inch Aqua**, publish their own risk curves, and compete on price.
+Airbag is parametric cover for **Uniswap v4 liquidity providers** on Arbitrum. An LP pays a small premium and
+holds a transferable cover note linked to their position. When the pool moves and the LP loss passes 0.5%, a
+**Uniswap v4 hook measures it on-chain**, a permissionless keeper fires the payout and **the USDG lands in the
+holder's wallet automatically**, with no claim form, no committee and no waiting period. The same engine also
+covers a **USDG depeg** and a **tokenized-stock gap-down**, and **Tokenomist** unlock data shows an LP when a
+pool is about to move. Underwriters back the cover from their **own wallets through 1inch Aqua**, publish their
+own risk curves, and compete on price.
 
 **Live on Arbitrum Sepolia** · **13 contracts, all source-verified** · **62 Foundry tests passing** · three
-live cover products · automatic payouts · 3 competing underwriters · a real Uniswap v4 pool + hook
+live cover products · automatic payouts · 3 competing underwriters · a real Uniswap v4 pool + hook ·
+token unlock watch from Tokenomist
 
 ## Demo Video
 
-[![Airbag Demo](./media/demo-cover.png)](https://youtu.be/AGcrzesFw2s)
+[![Airbag Demo](./media/demo-cover.png)](https://youtu.be/H3WE77UesJ8)
 
 | | |
 |---|---|
-| 🌐 **Live app** | **[airbag.insure](https://airbag.insure)**: Arbitrum Sepolia, connect MetaMask (test USDG is free to mint) |
+| 🌐 **Live app** | **[airbag-insure.vercel.app](https://airbag-insure.vercel.app)**: Arbitrum Sepolia, connect MetaMask (test USDG is free to mint) |
 | 📜 **Contracts** | [Deployed addresses](#61-deployed-contracts-arbitrum-sepolia--chain-421614) (all verified on Arbiscan + Sourcify) · history in [`DEPLOYMENTS.md`](DEPLOYMENTS.md) |
 | 🧩 **Integrate** | `/integrate` in the app: a drop-in "Protect this balance" widget and a one-call contract API |
 | 🧪 **Try it yourself** | [Run it locally](#11-run-it-locally), or open the live app, connect MetaMask on Arbitrum Sepolia and mint test USDG |
@@ -152,6 +155,7 @@ Everything below runs against the deployed contracts on Arbitrum Sepolia.
 | Area | Features |
 |---|---|
 | **Buy cover** | Three products in one catalog · amount and term · live quote · the risk curve with "now" and "your rate" markers · the order book across underwriters, with your fill per underwriter · one-transaction routed buy · LP flow: "Become an LP" on the real v4 pool, then buy + link cover to the position |
+| **Unlock watch** | On the LP-loss product: upcoming token unlocks from Tokenomist (date, value, % of market cap, who receives them). An unlock moves the price, and every pool holding the token takes the LP loss, so an LP can cover the position before the date |
 | **Automatic payout** | Keeper bot (`frontend/scripts/keeper.mjs`) fires every triggered policy · the "Airbag deployed" banner when a payout lands in your wallet · a manual "Claim now" is still available |
 | **Event simulator** | Move the USDG feed ("Depeg → $0.92") · move the TSLAx feed ("Earnings miss −20%") · a real swap through the v4 pool ("wstETH depeg −33%") |
 | **Underwrite** | Your book: expected APY (premiums + vault), premiums, vault yield, payouts, net P&L, loss ratio · per-market table · open a new market: reserve, trigger band, solvency floor, and a **draggable risk-curve editor** with presets |

@@ -189,18 +189,6 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <aside>Liquidity providers earn fees, but when the two tokens move apart they lose money compared with just holding them. That is impermanent loss. In one study of Uniswap v3, half of LPs lost money this way, and the losses were bigger than the fees. Almost nothing in DeFi is insured, and what is insured pays slowly.</aside>
 </section>
 
-<section id="idea" class="dark">
-<div class="bag" style="width:520px;height:520px;right:-150px;top:-190px"></div>
-<div class="stripe"></div><p class="kick"><span class="mark"></span>THE IDEA IN ONE SENTENCE</p>
-<h2>An airbag does not ask you to file a claim.</h2>
-<div class="two">
-<p data-s><b style="background:var(--red)">The trigger is a number.</b>The pool itself measures your loss. Past 0.5%, the cover pays. No committee decides.</p>
-<p data-s><b style="background:var(--green)">The payout comes by itself.</b>A bot anyone can run sends the money to your wallet. You do not have to be online.</p>
-</div>
-<div class="foot"><span>AIRBAG</span><span>3</span></div>
-<aside>A car airbag does not wait for paperwork. It fires on impact. Airbag works the same way: the trigger is a loss measured on-chain, and the payout is automatic.</aside>
-</section>
-
 <section id="how">
 <div class="stripe"></div><p class="kick"><span class="mark"></span>HOW IT WORKS</p>
 <h2>Six steps. The buyer does two.</h2>
@@ -215,7 +203,7 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <li data-s class="hot"><span class="no">6</span><span><b>USDC goes from the underwriter to the buyer.</b> No claim form.</span></li>
 </ol>
 </div>
-<div class="foot"><span>Airbag gives the order · the money never sits in our contract</span><span>4</span></div>
+<div class="foot"><span>Airbag gives the order · the money never sits in our contract</span><span>3</span></div>
 <aside>Here is the whole flow. The underwriter opens a market, and the money stays in their wallet. The buyer adds liquidity and pays a premium. The hook measures the loss. When it passes half a percent, Airbag orders the payout, and the underwriter's money goes straight to the buyer.</aside>
 </section>
 
@@ -228,7 +216,7 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <div data-s><div class="node" style="background:var(--red)">3</div><h3>The prices split</h3><p class="fig" style="color:var(--red)">−3.18%</p><p class="txt">wstETH falls 40% against WETH. She is $3,175 worse off than holding.</p></div>
 <div data-s><div class="node" style="background:var(--green)">4</div><h3>She is paid</h3><p class="fig" style="color:var(--green)">+$2,675</p><p class="txt">Everything above the first 0.5%. If the loss deepens, the difference is paid later.</p></div>
 </div>
-<div class="foot"><span>Payout = (loss − 0.5%) ÷ (5% − 0.5%) × cover · the live LP market's settings</span><span>5</span></div>
+<div class="foot"><span>Payout = (loss − 0.5%) ÷ (5% − 0.5%) × cover · the live LP market's settings</span><span>4</span></div>
 <aside>Alice puts a hundred thousand dollars into the pool and buys forty-five hundred of cover, which is enough to cover every loss from half a percent to five percent. It costs about seven dollars for a month. The price moves, she loses 3,175 dollars against holding, and 2,675 lands in her wallet. She keeps only the first half percent.</aside>
 </section>
 
@@ -240,7 +228,7 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <div data-s><span class="pill" style="background:var(--blue)">RISK CURVE</span><h3>Each one sets a price</h3><p class="txt">The more cover an underwriter has sold, the higher their price. A router sends every order to the cheapest curves.</p></div>
 <div data-s><span class="pill" style="background:var(--green)">TWO INCOMES</span><h3>They earn twice</h3><p class="txt">Premiums from every policy, plus savings yield on the same reserve. It is only withdrawn when a payout fires.</p></div>
 </div>
-<div class="foot"><span>A market cannot sell more cover than its reserve allows · checked on-chain on every purchase</span><span>6</span></div>
+<div class="foot"><span>A market cannot sell more cover than its reserve allows · checked on-chain on every purchase</span><span>5</span></div>
 <aside>Who pays? Underwriters. Their reserve stays in their own wallet through 1inch Aqua. Each sets a price curve, and buyers always get the cheapest. A market cannot oversell its reserve.</aside>
 </section>
 
@@ -259,21 +247,8 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <div data-s style="background:var(--red)"><span class="pill">STABLECOIN</span><h3>Stablecoin depeg</h3><p class="t">Pays the full cover when the coin trades at or below $0.97.</p><p class="fig">≤ $0.97</p></div>
 <div data-s style="background:var(--ink)"><span class="pill">TOKENIZED STOCK</span><h3>Stock gap-down</h3><p class="t">Pays in proportion when a tokenized stock falls below its strike. A 20% gap pays 20% of the cover.</p><p class="fig">&lt; $250</p></div>
 </div>
-<div class="foot"><span>New products plug in as a new trigger contract · the reserve, pricing and payout stay the same</span><span>8</span></div>
+<div class="foot"><span>New products plug in as a new trigger contract · the reserve, pricing and payout stay the same</span><span>7</span></div>
 <aside>LP loss is one product. The same engine also covers a stablecoin depeg and a stock gap-down. A new product is just a new trigger.</aside>
-</section>
-
-<section id="use">
-<div class="stripe"></div><p class="kick"><span class="mark"></span>HOW TO USE IT</p>
-<h2>Pick, pay, do nothing</h2>
-<div class="nums">
-<div data-s><p class="n">1</p><h3>Pick your cover</h3><p class="txt">Choose the product, the amount and how many days.</p></div>
-<div data-s><p class="n">2</p><h3>Pay the premium</h3><p class="txt">One transaction. You receive a cover note that you can keep, send or sell.</p></div>
-<div data-s><p class="n">3</p><h3>Do nothing</h3><p class="txt">If the trigger fires, whoever holds the note is paid automatically.</p></div>
-<div data-s><p class="n plus">+</p><h3>Apps add a widget</h3><p class="txt">A wallet or DEX front end embeds a “Protect this position” button and sells cover to its own users.</p></div>
-</div>
-<div class="foot"><span>AIRBAG</span><span>9</span></div>
-<aside>For a liquidity provider it is three steps: pick, pay, and do nothing. For a wallet or a DEX front end it is one embedded widget.</aside>
 </section>
 
 <section id="new">
@@ -284,11 +259,11 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <tr data-s><td>Loss measured on-chain</td><td>The pool itself reports a liquidity provider's loss, and a flash loan cannot fake it</td><td><span class="pill">Uniswap v4 hook</span></td></tr>
 <tr data-s><td>Payout with no claim</td><td>A number decides, and anyone can fire the payout to the holder</td><td><span class="pill">Trigger + keeper</span></td></tr>
 <tr data-s><td>Reserve that is not pooled</td><td>The underwriter's money stays in their own wallet until a payout</td><td><span class="pill">1inch Aqua</span></td></tr>
-<tr data-s><td>A market for risk</td><td>Underwriters publish price curves and each order goes to the cheapest</td><td><span class="pill">Router + risk curves</span></td></tr>
+<tr data-s><td>Cover before the shock</td><td>Upcoming token unlocks show when a pool is about to move, so LPs buy cover before the date</td><td><span class="pill">Tokenomist API</span></td></tr>
 <tr data-s><td>Cover you can hand over</td><td>The note is a token, and whoever holds it is paid</td><td><span class="pill">ERC-6909 note</span></td></tr>
 </table>
-<div class="foot"><span>Aqua is 1inch's unmodified contract · we deployed it because 1inch is not on Arbitrum Sepolia yet</span><span>10</span></div>
-<aside>Other cover is discretionary, slow and pooled. Airbag is parametric, automatic, non-custodial and priced by a market, all four at once, and the loss is measured by the pool itself.</aside>
+<div class="foot"><span>Aqua is 1inch's unmodified contract · we deployed it because 1inch is not on Arbitrum Sepolia yet</span><span>8</span></div>
+<aside>Other cover is discretionary, slow and pooled. Airbag is parametric, automatic, non-custodial and priced by a market, all four at once, and the loss is measured by the pool itself. Tokenomist unlock dates tell an LP when to buy.</aside>
 </section>
 
 <section id="proof">
@@ -304,7 +279,7 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <h3>HONEST LIMITS</h3>
 <p>Testnet only and not audited. The price feeds are demo feeds that we move by hand; Chainlink and Pyth adapters are built but not live. Reserves are not locked, and one wallet can back several markets with the same money.</p>
 </div>
-<div class="foot"><span>AIRBAG</span><span>11</span></div>
+<div class="foot"><span>AIRBAG</span><span>9</span></div>
 <aside>This is not a mock-up. Every step in the demo is a real transaction on Arbitrum Sepolia. And these are the limits, said plainly: testnet, demo price feeds, and reserves that are checkable but not locked.</aside>
 </section>
 
@@ -316,7 +291,7 @@ td .pill{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;b
 <h1 data-s>Nobody files a claim.</h1>
 <h1 class="p" data-s>The airbag deploys.</h1>
 </div>
-<p class="sub" data-s style="margin-top:auto">airbag.insure · live demo next</p>
+<p class="sub" data-s style="margin-top:auto">airbag-insure.vercel.app · live demo next</p>
 <aside>Prices move. Nobody files a claim. The airbag deploys. Now let me show it running.</aside>
 </section>
 
