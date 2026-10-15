@@ -19,3 +19,4 @@ node_modules/
 demo-video
 .claude
 mock
+commit-each.sh
