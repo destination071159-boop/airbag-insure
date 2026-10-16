@@ -48,9 +48,15 @@ token unlock watch from Tokenomist
 
 ## 1. The problem
 
-**Stablecoins are becoming real money, and almost nobody can insure them.**
+**Liquidity providers lose money when prices move, and almost nobody can insure them.**
 
-- **Pegs break.** On 11 March 2023, USDC fell to about **$0.87** after Circle disclosed that $3.3B of its
+- **LPs lose more than they earn.** In a study of Uniswap v3, **49.5%** of liquidity providers did worse than if
+  they had just held the two tokens: **$260M** lost to price moves (impermanent loss) against **$199M** earned in
+  fees, May–Sep 2021 ([Loesch et al., Bancor & Topaze Blue](https://arxiv.org/abs/2111.09192)).
+- **The moves have dates.** Token unlocks release new supply to teams and investors on a known schedule, and the
+  price often moves on it. Every pool that holds the token takes the LP loss, yet there is no product an LP can
+  buy before the date.
+- **Pegs break too.** On 11 March 2023, USDC fell to about **$0.87** after Circle disclosed that $3.3B of its
   reserves were stuck at Silicon Valley Bank. It took about three days to recover
   ([CNBC](https://www.cnbc.com/2023/03/11/stablecoin-usdc-breaks-dollar-peg-after-firm-reveals-it-has-3point3-billion-in-svb-exposure.html)).
   A peg is only as strong as the bank the reserves sit in.
